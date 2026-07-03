@@ -1,0 +1,944 @@
+// =============================================
+// style.scss — Nex 賃貸仲介LP
+// =============================================
+
+// ── 変数 ──────────────────────────────────────
+$c-indigo:       #2D2A6E;
+$c-indigo-mid:   #4A46A8;
+$c-indigo-light: #E8E8FA;
+$c-accent:       #1DB87A;
+$c-accent-dark:  #0F7A51;
+$c-bg:           #F7F7FB;
+$c-white:        #ffffff;
+$c-text:         #1A1A2E;
+$c-muted:        #6B6B8A;
+$c-border:       #E2E2EE;
+$c-gold:         #BA7517;
+
+$font-jp:   'Noto Sans JP', sans-serif;
+$font-en:   'Montserrat', sans-serif;
+
+$bp-sp:  480px;
+$bp-tab: 768px;
+$bp-pc:  1024px;
+
+$header-height: 72px;
+$header-height-sp: 56px;
+
+// ── ミックスイン ──────────────────────────────
+@mixin sp  { @media (max-width: #{$bp-sp})  { @content; } }
+@mixin tab { @media (max-width: #{$bp-tab}) { @content; } }
+@mixin pc  { @media (min-width: #{$bp-pc})  { @content; } }
+
+@mixin flex($justify: flex-start, $align: center, $gap: 0) {
+  display: flex;
+  justify-content: $justify;
+  align-items: $align;
+  gap: $gap;
+}
+
+@mixin inner($max: 1120px, $pad: 24px) {
+  max-width: $max;
+  margin: 0 auto;
+  padding: 0 $pad;
+}
+
+@mixin btn-base {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 32px;
+  border-radius: 100px;
+  font-weight: 700;
+  font-size: 15px;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.25s, transform 0.2s, box-shadow 0.25s;
+  white-space: nowrap;
+}
+
+@mixin heading-en {
+  font-family: $font-en;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: $c-accent;
+}
+
+@mixin fade-in-base {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+// ── リセット読み込み ───────────────────────────
+@import 'reset';
+
+// ── ベース ────────────────────────────────────
+html { font-size: 16px; }
+
+body {
+  font-family: $font-jp;
+  color: $c-text;
+  background: $c-white;
+  line-height: 1.8;
+  font-size: 15px;
+}
+
+.inner { @include inner; }
+
+.hidden-pc { @include pc { display: none; } }
+.hidden-sp { @include tab { display: none; } }
+.inline-block { display: inline-block; }
+
+// ── 共通：見出し ──────────────────────────────
+.heading {
+  text-align: center;
+  margin-bottom: 48px;
+
+  &__en  { @include heading-en; display: block; margin-bottom: 8px; }
+  &__ja  {
+    font-size: 30px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    color: $c-text;
+    @include sp { font-size: 24px; }
+  }
+}
+
+// ── 共通：ボタン ──────────────────────────────
+.button {
+  @include btn-base;
+  background: $c-accent;
+  color: $c-white;
+
+  &:hover {
+    background: $c-accent-dark;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba($c-accent, 0.3);
+  }
+
+  &--type2 {
+    background: $c-white;
+    color: $c-indigo;
+    &:hover { background: $c-indigo-light; }
+  }
+}
+
+// ── スクロールイン アニメーション ───────────────
+.js-in-view, .js-in-view2 {
+  @include fade-in-base;
+  &.is-in-view { opacity: 1; transform: translateY(0); }
+}
+
+// ── HEADER ────────────────────────────────────
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 200;
+  background: rgba(255,255,255,0.96);
+  backdrop-filter: blur(10px);
+  height: $header-height-sp;
+  border-bottom: 1px solid transparent;
+  transition: box-shadow 0.3s, border-color 0.3s;
+
+  @include pc { height: $header-height; }
+
+  &.is-scrolled {
+    border-color: $c-border;
+    box-shadow: 0 2px 16px rgba($c-indigo, 0.06);
+  }
+
+  &__inner {
+    @include flex(space-between, center);
+    height: 100%;
+    padding: 0 20px;
+    @include pc { padding: 0 40px; }
+  }
+
+  &__logo {
+    img { height: 35px; width: auto; @include pc { height: 40px; } }
+  }
+
+  &__nav {
+    display: none;
+    @include pc { @include flex(flex-end, center, 32px); }
+  }
+
+  &__link {
+    font-size: 14px;
+    font-weight: 500;
+    color: $c-muted;
+    position: relative;
+    transition: color 0.2s;
+
+    &:hover { color: $c-indigo; }
+  }
+
+  &__button {
+    padding: 10px 24px;
+    font-size: 13px;
+  }
+
+  &__open { @include pc { display: none; } }
+}
+
+// ── ドロワーアイコン ───────────────────────────
+.drawer-icon {
+  @include flex(center, center);
+  flex-direction: column;
+  gap: 5px;
+  width: 32px;
+  height: 32px;
+  z-index: 300;
+  @include pc { display: none; }
+
+  &__bar {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: $c-indigo;
+    border-radius: 2px;
+    transition: transform 0.3s, opacity 0.3s;
+  }
+
+  &.is-open {
+    .drawer-icon__bar:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .drawer-icon__bar:nth-child(2) { opacity: 0; }
+    .drawer-icon__bar:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+  }
+}
+
+// ── ドロワーメニュー ───────────────────────────
+.drawer-content {
+  position: fixed;
+  inset: 0;
+  top: $header-height-sp;
+  background: $c-white;
+  transform: translateX(100%);
+  transition: transform 0.35s ease;
+  z-index: 150;
+  overflow-y: auto;
+
+  &.is-open { transform: translateX(0); }
+
+  &__menu {
+    @include flex(center, center, 28px);
+    flex-direction: column;
+    padding: 48px 24px;
+  }
+
+  &__link {
+    font-size: 17px;
+    font-weight: 600;
+    color: $c-text;
+  }
+
+  &__button { margin-top: 16px; }
+
+  @include pc { display: none; }
+}
+
+body.is-drawer-open { overflow: hidden; }
+
+// ── MV（ヒーロー） ─────────────────────────────
+.mv {
+  background: linear-gradient(160deg, $c-indigo 0%, #1a1750 100%);
+  padding: 56px 0 0;
+  overflow: hidden;
+
+  @include pc { padding: 88px 0 0; }
+
+  &__inner {
+    @include inner;
+    @include flex(space-between, center, 40px);
+    flex-direction: column;
+    @include pc { flex-direction: row; align-items: flex-end; }
+  }
+
+  &__content { text-align: center; @include pc { text-align: left; flex: 1; padding-bottom: 64px; } }
+
+  &__lead {
+    font-size: 26px;
+    font-weight: 700;
+    color: $c-white;
+    line-height: 1.5;
+    margin-bottom: 20px;
+    @include pc { font-size: 38px; }
+  }
+  &__lead1 { display: block; }
+  &__lead2 { display: block; color: $c-accent; }
+
+  &__description {
+    font-size: 14px;
+    color: rgba(255,255,255,0.72);
+    line-height: 1.9;
+    margin-bottom: 32px;
+    @include pc { font-size: 16px; }
+  }
+
+  &__button { @include pc { } }
+
+  &__image {
+    flex: 1;
+    width: 100%;
+    border-radius: 16px 16px 0 0;
+    overflow: hidden;
+    img { width: 100%; }
+  }
+}
+
+// ── CASE（導入実績） ───────────────────────────
+.case {
+  background: $c-bg;
+  padding: 40px 0;
+
+  &__inner { @include inner; }
+
+  &__title {
+    text-align: center;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: $c-muted;
+    margin-bottom: 24px;
+  }
+
+  &__items {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    @include pc { grid-template-columns: repeat(8, 1fr); }
+  }
+
+  &__item {
+    @include flex(center, center);
+    background: $c-white;
+    border: 1px solid $c-border;
+    border-radius: 8px;
+    padding: 12px;
+    aspect-ratio: 2 / 1;
+
+    img { opacity: 0.7; filter: grayscale(1); transition: opacity .25s, filter .25s; }
+    &:hover img { opacity: 1; filter: grayscale(0); }
+  }
+}
+
+// ── NEWS ──────────────────────────────────────
+.news {
+  padding: 64px 0;
+  @include pc { padding: 88px 0; }
+
+  &__card {
+    max-width: 880px;
+    margin: 0 auto;
+  }
+
+  &__title {
+    @include heading-en;
+    text-align: center;
+    margin-bottom: 32px;
+    font-size: 16px;
+  }
+
+  &__lists {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  &__link {
+    text-align: center;
+    margin-top: 32px;
+    a {
+      font-size: 14px;
+      color: $c-indigo;
+      font-weight: 600;
+      border-bottom: 1px solid $c-indigo;
+      padding-bottom: 2px;
+    }
+  }
+}
+
+.news-link {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 18px 0;
+  border-bottom: 1px solid $c-border;
+  transition: opacity 0.2s;
+
+  @include pc { flex-direction: row; align-items: center; gap: 24px; }
+  &:hover { opacity: 0.65; }
+
+  &__meta { @include flex(flex-start, center, 12px); flex-shrink: 0; }
+  &__date { font-size: 13px; color: $c-muted; font-family: $font-en; }
+
+  &__label {
+    font-size: 11px;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 100px;
+    color: $c-white;
+    &.is-news   { background: $c-indigo-mid; }
+    &.is-column { background: $c-accent; }
+    &.is-event  { background: $c-gold; }
+  }
+
+  &__title {
+    font-size: 14px;
+    line-height: 1.7;
+    color: $c-text;
+    @include pc { flex: 1; }
+  }
+}
+
+// ── ABOUT ─────────────────────────────────────
+.about {
+  background: $c-indigo-light;
+  padding: 64px 0;
+  @include pc { padding: 100px 0; }
+
+  &__inner { @include inner; }
+
+  &__title {
+    text-align: center;
+    margin-bottom: 40px;
+    img { height: 36px; margin: 0 auto; @include pc { height: 44px; } }
+  }
+
+  &__content {
+    @include flex(center, center, 40px);
+    flex-direction: column;
+    @include pc { flex-direction: row; align-items: flex-start; gap: 64px; }
+  }
+
+  &__image {
+    width: 100%;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 20px 50px rgba($c-indigo, 0.15);
+    @include pc { flex: 1.5; }
+  }
+
+  &__text {
+    font-size: 14px;
+    line-height: 2;
+    color: $c-text;
+    @include pc { flex: 1; font-size: 15px; }
+  }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-top: 24px;
+    flex-wrap: wrap;
+  }
+
+  &__pop {
+    display: inline-flex;
+    align-items: center;
+    padding: 14px 20px;
+    background: $c-gold;
+    color: $c-white;
+    font-weight: 800;
+    font-size: 15px;
+    border-radius: 150px;
+  }
+
+  &__button { margin-top: 0; }
+}
+
+// ── about modal ───────────────────────────────
+.about-modal {
+  width: 640px;
+  max-width: 90%;
+  max-height: 80vh;
+  border-radius: 16px;
+  padding: 0;
+  overflow: hidden;
+
+  &::backdrop { background: rgba(20,20,32,0.6); backdrop-filter: blur(4px); }
+
+  &__head { @include flex(flex-end); padding: 16px; }
+  &__close-icon { width: 28px; height: 28px; img { width: 100%; } }
+
+  &__body {
+    padding: 0 32px 24px;
+    overflow-y: auto;
+    max-height: 50vh;
+    font-size: 14px;
+    line-height: 1.9;
+    color: $c-text;
+    p + p { margin-top: 18px; }
+  }
+
+  &__close-button {
+    padding: 20px 32px 28px;
+    text-align: center;
+    border-top: 1px solid $c-border;
+    .button { width: 100%; }
+  }
+}
+
+// ── MOVIE ─────────────────────────────────────
+.movie {
+  padding: 64px 0;
+  background: $c-bg;
+  @include pc { padding: 100px 0; }
+
+  &__inner { @include inner(880px); }
+
+  &__iframe {
+    position: relative;
+    width: 100%;
+    padding-top: 56.25%;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 20px 50px rgba($c-indigo, 0.12);
+
+    iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
+
+// ── HOW TO USE ────────────────────────────────
+.how-to-use {
+  padding: 64px 0;
+  @include pc { padding: 100px 0; }
+
+  &__inner { @include inner; }
+  &__title { margin-bottom: 48px; }
+
+  &__boxes {
+    display: flex;
+    flex-direction: column;
+    gap: 56px;
+  }
+
+  &__box-title {
+    @include flex(center, center, 16px);
+    flex-direction: column;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 700;
+    color: $c-indigo;
+    margin-bottom: 32px;
+    @include pc { flex-direction: row; font-size: 20px; }
+
+    img { width: 64px; border-radius: 12px; }
+  }
+
+  &.is-type2 &__box-title { color: $c-accent-dark; }
+
+  &__steps {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    @include pc { grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  }
+}
+
+.step-box {
+  background: $c-white;
+  border: 1px solid $c-border;
+  border-radius: 14px;
+  overflow: hidden;
+  height: 100%;
+
+  &__head {
+    @include flex(space-between, center);
+    padding: 12px 18px;
+    background: $c-indigo;
+  }
+  &__head-text { font-size: 11px; color: rgba(255,255,255,0.6); letter-spacing: 0.1em; }
+  &__head-number { font-size: 22px; font-weight: 700; color: $c-accent; font-family: $font-en; }
+
+  &__body { padding: 20px; text-align: center; }
+  &__image {
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 16px;
+    aspect-ratio: 5/3;
+    background: $c-bg;
+  }
+  &__text { font-size: 13px; line-height: 1.7; color: $c-text; }
+}
+
+// ── MERIT ─────────────────────────────────────
+.merit {
+  padding: 64px 0;
+  background: $c-bg;
+  @include pc { padding: 100px 0; }
+
+  &__inner { @include inner; }
+  &__title { margin-bottom: 56px; }
+
+  &__boxes {
+    display: flex;
+    flex-direction: column;
+    gap: 64px;
+  }
+}
+
+.merit-box {
+  &__content {
+    @include flex(center, center, 32px);
+    flex-direction: column;
+    @include pc { flex-direction: row; gap: 56px; }
+  }
+
+  &.is-reverse &__content { @include pc { flex-direction: row-reverse; } }
+
+  &__image {
+    width: 100%;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 16px 40px rgba($c-indigo, 0.12);
+    @include pc { flex: 1; }
+  }
+
+  &__body { @include pc { flex: 1; } }
+
+  &__head {
+    @include flex(flex-start, flex-start, 14px);
+    margin-bottom: 16px;
+  }
+
+  &__number {
+    flex-shrink: 0;
+    width: 36px;
+    height: 36px;
+    @include flex(center, center);
+    background: $c-accent;
+    color: $c-white;
+    border-radius: 50%;
+    font-weight: 700;
+    font-family: $font-en;
+  }
+
+  &__title {
+    font-size: 18px;
+    font-weight: 700;
+    color: $c-text;
+    line-height: 1.5;
+    padding-top: 4px;
+  }
+
+  &__text {
+    font-size: 14px;
+    line-height: 1.9;
+    color: $c-muted;
+  }
+}
+
+// ── CTA ───────────────────────────────────────
+.cta {
+  background: linear-gradient(160deg, $c-indigo 0%, #1a1750 100%);
+  padding: 64px 0;
+  text-align: center;
+  @include pc { padding: 88px 0; }
+
+  &__inner { @include inner(700px); }
+}
+
+.cat__text {
+  font-size: 18px;
+  font-weight: 700;
+  color: $c-white;
+  line-height: 1.7;
+  margin-bottom: 32px;
+  @include pc { font-size: 24px; }
+}
+
+.cat__button { @include flex(center, center); }
+
+// ── COMPARE ───────────────────────────────────
+.compare {
+  padding: 64px 0;
+  @include pc { padding: 100px 0; }
+
+  &__inner { @include inner; }
+
+  &__title {
+    text-align: center;
+    font-size: 26px;
+    font-weight: 700;
+    color: $c-text;
+    margin-bottom: 32px;
+  }
+
+  &__content { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+
+  &__attention {
+    display: block;
+    text-align: center;
+    font-size: 12px;
+    color: $c-muted;
+    margin-top: 12px;
+    @include pc { display: none; }
+  }
+}
+
+.compare__table {
+  min-width: 680px;
+  border-collapse: separate;
+  border-spacing: 0;
+
+  th, td {
+    padding: 18px 20px;
+    text-align: center;
+    border: 1px solid $c-border;
+    font-size: 13px;
+  }
+
+  thead th {
+    background: $c-bg;
+    font-weight: 700;
+    img { height: 24px; margin: 0 auto; }
+  }
+
+  thead th:nth-child(2) {
+    background: $c-indigo;
+    color: $c-white;
+    img { filter: brightness(0) invert(1); }
+  }
+
+  tbody th {
+    background: $c-bg;
+    text-align: left;
+    font-weight: 600;
+    color: $c-text;
+    white-space: nowrap;
+  }
+
+  tbody td:nth-child(2) {
+    background: rgba($c-accent, 0.08);
+    font-weight: 700;
+    color: $c-accent-dark;
+  }
+}
+
+// ── QA ────────────────────────────────────────
+.qa {
+  padding: 64px 0;
+  background: $c-bg;
+  @include pc { padding: 100px 0; }
+
+  &__inner { @include inner(800px); }
+  &__title { margin-bottom: 40px; }
+
+  &__boxes {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+}
+
+.qa-box {
+  background: $c-white;
+  border: 1px solid $c-border;
+  border-radius: 12px;
+  overflow: hidden;
+
+  &__head {
+    @include flex(flex-start, center, 16px);
+    width: 100%;
+    padding: 18px 20px;
+    text-align: left;
+  }
+
+  &__head-icon {
+    flex-shrink: 0;
+    width: 28px;
+    height: 28px;
+    @include flex(center, center);
+    background: $c-indigo;
+    color: $c-white;
+    border-radius: 50%;
+    font-weight: 700;
+    font-size: 13px;
+  }
+
+  &__head-text {
+    font-size: 14px;
+    font-weight: 600;
+    color: $c-text;
+    line-height: 1.6;
+  }
+
+  &__body { display: none; }
+  &.is-open &__body { display: block; }
+
+  &__a {
+    @include flex(flex-start, flex-start, 16px);
+    padding: 0 20px 20px 20px;
+    margin-left: 0;
+  }
+
+  &__a-icon {
+    flex-shrink: 0;
+    width: 28px;
+    height: 28px;
+    @include flex(center, center);
+    background: $c-accent;
+    color: $c-white;
+    border-radius: 50%;
+    font-weight: 700;
+    font-size: 13px;
+  }
+
+  &__a-text {
+    font-size: 13px;
+    line-height: 1.8;
+    color: $c-muted;
+    padding-top: 4px;
+  }
+}
+
+// ── GALLERY ───────────────────────────────────
+.gallery {
+  padding: 64px 0;
+  @include pc { padding: 100px 0; }
+
+  &__inner { @include inner; }
+  &__title { margin-bottom: 40px; }
+
+  &__slider { position: relative; padding: 0 0 56px; }
+
+  &__pagination {
+    position: relative;
+    margin-top: 24px;
+
+    .swiper-pagination-bullet { background: $c-indigo-mid; }
+    .swiper-pagination-bullet-active { background: $c-accent; }
+  }
+
+  &__prev, &__next {
+    color: $c-indigo;
+    &::after { font-size: 22px; }
+  }
+}
+
+.gallery-card {
+  background: $c-white;
+  border: 1px solid $c-border;
+  border-radius: 14px;
+  overflow: hidden;
+  height: 100%;
+
+  &__image { aspect-ratio: 4/3; overflow: hidden; img { width: 100%; height: 100%; object-fit: cover; } }
+  &__text { padding: 16px 18px; font-size: 13px; line-height: 1.7; color: $c-text; }
+}
+
+// ── CONTACT ───────────────────────────────────
+.contact {
+  padding: 64px 0;
+  background: $c-bg;
+  @include pc { padding: 100px 0; }
+
+  &__inner { @include inner(720px); }
+
+  &__box {
+    background: $c-white;
+    border-radius: 20px;
+    padding: 32px 20px;
+    box-shadow: 0 20px 50px rgba($c-indigo, 0.08);
+    @include pc { padding: 56px 64px; }
+  }
+
+  &__title { margin-bottom: 32px; }
+  &__fields { display: flex; flex-direction: column; gap: 24px; }
+  &__privacy { margin-top: 28px; text-align: center; }
+  &__button { margin-top: 28px; text-align: center; }
+}
+
+.form-field {
+  &__head { @include flex(flex-start, center, 10px); margin-bottom: 8px; }
+  &__label { font-size: 13px; font-weight: 700; color: $c-text; }
+
+  &__tag {
+    font-size: 10px;
+    font-weight: 700;
+    color: $c-white;
+    background: $c-accent;
+    padding: 2px 8px;
+    border-radius: 4px;
+    &.is-option { background: $c-muted; }
+  }
+
+  &__radios { @include flex(flex-start, center, 16px); flex-wrap: wrap; }
+}
+
+.form-text, .form-textarea, .form-select {
+  width: 100%;
+  padding: 13px 16px;
+  border: 1px solid $c-border;
+  border-radius: 8px;
+  font-size: 14px;
+  background: $c-white;
+  transition: border-color 0.2s;
+
+  &:focus { outline: none; border-color: $c-accent; }
+}
+
+.form-textarea { resize: vertical; min-height: 120px; }
+
+.from-radio {
+  @include flex(flex-start, center, 8px);
+  cursor: pointer;
+  font-size: 13px;
+
+  &__input { width: 16px; height: 16px; accent-color: $c-accent; }
+}
+
+.form-checkbox {
+  @include flex(center, center, 8px);
+  cursor: pointer;
+  font-size: 13px;
+
+  &__input { width: 16px; height: 16px; accent-color: $c-accent; }
+  &__text a { color: $c-indigo; text-decoration: underline; }
+}
+
+input[type="submit"].button {
+  border: none;
+  font-family: inherit;
+}
+
+// ── FOOTER ────────────────────────────────────
+.footer {
+  background: $c-text;
+  padding: 28px 0;
+
+  &__inner { @include inner; text-align: center; }
+  &__copyright { font-size: 12px; color: rgba(255,255,255,0.5); }
+}
+
+// ── PAGETOP ───────────────────────────────────
+.pagetop {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 0 6px 20px rgba($c-indigo, 0.25);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(12px);
+  transition: opacity 0.3s, transform 0.3s, visibility 0.3s;
+  z-index: 100;
+
+  &.is-show { opacity: 1; visibility: visible; transform: translateY(0); }
+
+  img { width: 100%; height: 100%; object-fit: cover; }
+}
