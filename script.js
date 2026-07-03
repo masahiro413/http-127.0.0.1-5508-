@@ -211,31 +211,97 @@
 
   function initSwiper() {
     const container = document.querySelector('.swiper');
-    if (!container || typeof window.Swiper !== 'function') {
+    if (!container) {
       return;
     }
 
-    new window.Swiper(container, {
-      loop: true,
-      slidesPerView: 1,
-      spaceBetween: 16,
-      pagination: {
-        el: '.swiper-pagination',
-        clickable: true,
-      },
-      navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-      },
-      breakpoints: {
-        768: {
-          slidesPerView: 2,
+    if (typeof window.Swiper === 'function') {
+      new window.Swiper(container, {
+        loop: true,
+        slidesPerView: 1,
+        spaceBetween: 16,
+        pagination: {
+          el: '.swiper-pagination',
+          clickable: true,
         },
-        1024: {
-          slidesPerView: 3,
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
         },
-      },
+        breakpoints: {
+          768: {
+            slidesPerView: 2,
+          },
+          1024: {
+            slidesPerView: 3,
+          },
+        },
+      });
+      return;
+    }
+
+    const slides = Array.from(container.querySelectorAll('.swiper-slide'));
+    const prevButton = container.querySelector('.swiper-button-prev');
+    const nextButton = container.querySelector('.swiper-button-next');
+    const pagination = container.querySelector('.swiper-pagination');
+
+    if (!slides.length || !prevButton || !nextButton || !pagination) {
+      return;
+    }
+
+    let index = 0;
+
+    function getSlidesPerView() {
+      if (window.innerWidth >= 1024) {
+        return 3;
+      }
+      if (window.innerWidth >= 768) {
+        return 2;
+      }
+      return 1;
+    }
+
+    function render() {
+      const slidesPerView = getSlidesPerView();
+      const activeIndexes = new Set();
+
+      for (let i = 0; i < slidesPerView; i += 1) {
+        activeIndexes.add((index + i) % slides.length);
+      }
+
+      slides.forEach(function (slide, slideIndex) {
+        slide.style.display = activeIndexes.has(slideIndex) ? 'grid' : 'none';
+      });
+
+      Array.from(pagination.children).forEach(function (bullet, bulletIndex) {
+        bullet.classList.toggle('is-active', bulletIndex === index);
+      });
+    }
+
+    pagination.innerHTML = '';
+    slides.forEach(function (_, slideIndex) {
+      const bullet = document.createElement('button');
+      bullet.type = 'button';
+      bullet.className = 'swiper-bullet';
+      bullet.addEventListener('click', function () {
+        index = slideIndex;
+        render();
+      });
+      pagination.appendChild(bullet);
     });
+
+    prevButton.addEventListener('click', function () {
+      index = (index - 1 + slides.length) % slides.length;
+      render();
+    });
+
+    nextButton.addEventListener('click', function () {
+      index = (index + 1) % slides.length;
+      render();
+    });
+
+    window.addEventListener('resize', render, { passive: true });
+    render();
   }
 
   function initAll() {

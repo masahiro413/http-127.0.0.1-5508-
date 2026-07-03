@@ -94,3 +94,31 @@ section {
   display: grid;
   place-items: center;
 }
+
+.swiper-wrapper {
+  display: grid;
+  gap: 16px;
+}
+
+.swiper-pagination {
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.swiper-bullet {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: none;
+  background: #b9c2d9;
+}
+
+.swiper-bullet.is-active {
+  background: #334a7d;
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+  margin-top: 12px;
+}
