@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head prefix="og: https://ogp.me/ns#">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex" />
+    <title>Nex - 賃貸仲介業務をひとつに</title>
+    <meta
+      name="description"
+      content="Nexは、反響管理・追客自動化・内見調整・申込まで、賃貸仲介業務をまるごとデジタル化するSaaSです。"
+    />
+    <link rel="icon" href="./img/favicon-32x32.png" />
+    <meta property="og:title" content="Nex - 賃貸仲介業務をひとつに" />
+    <meta
+      property="og:description"
+      content="Nexは、反響管理・追客自動化・内見調整・申込まで、賃貸仲介業務をまるごとデジタル化するSaaSです。"
+    />
+    <meta property="og:type" content="website" />
+    <!-- 案件では実際のURLを入れる -->
+    <meta property="og:url" content="https://example.com/" />
+    <!-- 案件では実際のURLを入れる -->
+    <meta property="og:image" content="https://example.com/img/ogp.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./css/swiper.hundle.min.css" />
+    <link rel="stylesheet" href="./css/reset.css" />
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+  
+    <header class="header">
+      <div class="header__inner">
+        <h1 class="header__logo">
+          <a href=""><img src="./img/logo.png" alt="Nex" /></a>
+        </h1>
+        <nav class="header__nav">
+          <a href="#about" class="header__link">サービスについて</a>
+          <a href="#how-to-use" class="header__link">使い方</a>
+          <a href="#merit" class="header__link">導入メリット</a>
+          <a href="#contact" class="header__button button">無料トライアル</a>
+        </nav>
+        <button id="js-drawer-icon" class="header__open drawer-icon">
+          <span class="drawer-icon__bar"></span>
+          <span class="drawer-icon__bar"></span>
+          <span class="drawer-icon__bar"></span>
+        </button>
+      </div>
+    </header>
+
+    <div id="js-drawer-content" class="drawer-content">
+      <nav class="drawer-content__menu">
+        <a href="#about" class="drawer-content__link">サービスについて</a>
+        <a href="#how-to-use" class="drawer-content__link">使い方</a>
+        <a href="#merit" class="drawer-content__link">導入メリット</a>
+        <div class="drawer-content__button">
+          <a href="#contact" class="button">無料トライアル</a>
+        </div>
+      </nav>
+    </div>
+
+    <div class="mv">
+      <div class="mv__inner">
+        <div class="mv__content">
+          <p class="mv__lead">
+            <span class="mv__lead1">賃貸仲介の現場を、</span>
+            <span class="mv__lead2">もっとシンプルに。</span>
+          </p>
+          <p class="mv__description">
+            Nexは、反響管理から追客・内見・<br />申込まで、賃貸仲介業務を<br />ひとつのツールにまとめた<br />クラウドSaaSです。
+          </p>
+          <div class="mv__button">
+            <a href="#contact" class="button button--type2">14日間 無料で試す</a>
+          </div>
+        </div>
+        <div class="mv__image">
+          <img src="./img/hero-dashboard.png" alt="Nexダッシュボード画面" />
+        </div>
+      </div>
+    </div>
+
+    <section class="case">
+      <div class="case__inner">
+        <h2 class="case__title js-in-view fade-in-up">導入企業実績</h2>
+        <div class="case__items">
+          <div class="case__item"><img src="./img/case1-img.png" alt="導入企業1" /></div>
+          <div class="case__item"><img src="./img/case2-img.png" alt="導入企業2" /></div>
+          <div class="case__item"><img src="./img/case3-img.png" alt="導入企業3" /></div>
+          <div class="case__item"><img src="./img/case4-img.png" alt="導入企業4" /></div>
+          <div class="case__item"><img src="./img/case5-img.png" alt="導入企業5" /></div>
+          <div class="case__item"><img src="./img/case6-img.png" alt="導入企業6" /></div>
+          <div class="case__item"><img src="./img/case7-img.png" alt="導入企業7" /></div>
+          <div class="case__item"><img src="./img/case8-img.png" alt="導入企業8" /></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="news">
+      <div class="news__inner inner">
+        <div class="news__card">
+          <h2 class="news__title js-in-view fade-in-up">NEWS</h2>
+          <div class="news__lists">
+            <a href="" class="news__list news-link">
+              <div class="news-link__meta">
+                <time class="news-link__date" datetime="2025-04-01">2025年4月1日</time>
+                <div class="news-link__label is-news">お知らせ</div>
+              </div>
+              <h3 class="news-link__title">Spring Update：LINE追客シナリオ機能をリリースしました</h3>
+            </a>
+            <a href="" class="news__list news-link">
+              <div class="news-link__meta">
+                <time class="news-link__date" datetime="2025-03-10">2025年3月10日</time>
+                <div class="news-link__label is-column">コラム</div>
+              </div>
+              <h3 class="news-link__title">
+                反響取りこぼしをゼロにした仲介会社の事例──Nexを導入して成約率が1.8倍になった理由
+              </h3>
+            </a>
+            <a href="" class="news__list news-link">
+              <div class="news-link__meta">
+                <time class="news-link__date" datetime="2025-02-15">2025年2月15日</time>
+                <div class="news-link__label is-event">イベント情報</div>
+              </div>
+              <h3 class="news-link__title">
+                不動産テックEXPO 2025に出展します！ブース番号はA-14です。
+              </h3>
+            </a>
+          </div>
+          <div class="news__link"><a href="">もっとみる</a></div>
+        </div>
+      </div>
+    </section>
+
+    <div id="about" class="about">
+      <div class="about__inner">
+        <div class="about__title js-in-view fade-in-up">
+          <img src="./img/logo.png" alt="Nex" />
+        </div>
+        <div class="about__content">
+          <div class="about__image">
+            <img src="./img/about-img.png" alt="Nexのイメージ" />
+          </div>
+          <p class="about__text">
+            仲介会社のスタッフは毎日、<br class="hidden-pc" />どこから来たか分からない反響を<br />
+            Excelに転記し、<br class="hidden-pc" />電話で内見日程を調整し、<br />
+            紙の申込書を郵送で受け取る。<br class="hidden-pc" />そんな作業に追われています。<br />
+            反響が来ても対応が遅れれば、<br class="hidden-pc" />お客様は他社へ。<br />
+            追客を忘れれば、<br class="hidden-pc" />せっかくの縁も途切れてしまう。<br />
+            Nexは「もっと現場の時間を<br class="hidden-pc" />お客様のために使いたい」<br />
+            という声から生まれました。<br />反響管理から成約まで、<br class="hidden-pc" />ひとつの画面で完結します。
+          </p>
+          <div class="about__actions">
+            <div class="about__pop">＼導入3日で使えます！／</div>
+            <div class="about__button">
+              <button class="button js-modal-open">開発ストーリーを見る</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <dialog id="js-about-modal" class="about-modal">
+      <div class="about-modal__head">
+        <button class="about-modal__close-icon js-modal-close">
+          <img src="./img/close-icon.png" alt="モーダルを閉じる" />
+        </button>
+      </div>
+      <div class="about-modal__body">
+        <p>
+          Nexの開発チームは、もともと賃貸仲介会社でシステム担当をしていたメンバーが中心です。現場で毎日Excelと格闘しながら「なぜこんなに非効率なのか」と感じ続けた経験が原点にあります。
+          既存のシステムは高額で導入に数ヶ月かかるものばかり。小規模な仲介会社には手が届かない現実がありました。
+        </p>
+        <p>
+          「3日で使えて、現場のスタッフが迷わず操作できるツールを作ろう」——その一言からNexは始まりました。
+          反響が来た瞬間に自動でフォローが入り、内見の調整も申込もすべてデジタルで完結する。
+          現場スタッフが本来集中すべき「お客様との対話」に時間を使えるよう、Nexは今日も進化し続けています。
+        </p>
+      </div>
+      <div class="about-modal__close-button">
+        <button class="button js-modal-close">閉じる</button>
+      </div>
+    </dialog>
+
+    
+    <section class="movie">
+      <div class="movie__inner">
+        <div class="heading js-in-view fade-in-up">
+          <div class="heading__en">MOVIE</div>
+          <h2 class="heading__ja">3分で分かる！Nexについて</h2>
+        </div>
+        <div class="movie__iframe">
+          <iframe
+            width="560"
+            height="315"
+            src="video/nex_intro (2).mp4"
+            title="Nex紹介動画"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen
+          ></iframe>
+        </div>
+      </div>
+    </section>
+    
+
+    <section id="how-to-use" class="how-to-use">
+      <div class="how-to-use__inner inner">
+        <div class="how-to-use__title">
+          <div class="heading js-in-view fade-in-up">
+            <div class="heading__en">HOW TO USE</div>
+            <h2 class="heading__ja">Nexの使い方</h2>
+          </div>
+        </div>
+        <div class="how-to-use__boxes">
+
+          <!-- フロー1：反響受付〜成約 -->
+          <div class="how-to-use__box">
+            <div class="how-to-use__box-title">
+              反響を受けて<br class="hidden-pc" />成約につなげたい方
+            </div>
+            <div class="how-to-use__steps">
+              <div class="how-to-use__step js-in-view anim-fade-in-up">
+                <div class="step-box">
+                  <div class="step-box__head">
+                    <div class="step-box__head-text">STEP</div>
+                    <div class="step-box__head-number">01</div>
+                  </div>
+                  <div class="step-box__body">
+                    <div class="step-box__image">
+                      <img src="./img/feature-01.png" alt="" />
+                    </div>
+                    <p class="step-box__text">
+                      ポータル・電話の反響を<br />自動で一覧化
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="how-to-use__step">
+                <div class="step-box">
+                  <div class="step-box__head">
+                    <div class="step-box__head-text">STEP</div>
+                    <div class="step-box__head-number">02</div>
+                  </div>
+                  <div class="step-box__body">
+                    <div class="step-box__image">
+                      <img src="./img/feature-02.png" alt="" />
+                    </div>
+                    <p class="step-box__text">
+                      メール・LINEで<br />自動追客スタート
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="how-to-use__step">
+                <div class="step-box">
+                  <div class="step-box__head">
+                    <div class="step-box__head-text">STEP</div>
+                    <div class="step-box__head-number">03</div>
+                  </div>
+                  <div class="step-box__body">
+                    <div class="step-box__image">
+                      <img src="./img/feature-03.png" alt="" />
+                    </div>
+                    <p class="step-box__text">
+                      内見予約・申込を<br />オンラインで完結
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <section id="merit" class="merit">
+      <div class="merit__inner inner">
+        <div class="merit__title">
+          <div class="heading js-in-view fade-in-up">
+            <div class="heading__en">MERIT</div>
+            <div class="heading__ja">Nexを使う3つのメリット</div>
+          </div>
+        </div>
+        <div class="merit__boxes">
+          <div class="merit__box">
+            <div class="merit-box">
+              <div class="merit-box__content">
+                <div class="merit-box__image">
+                  <img src="./img/feature-01.png" alt="" />
+                </div>
+                <div class="merit-box__body">
+                  <h3 class="merit-box__head">
+                    <span class="merit-box__number">1</span>
+                    <span class="merit-box__title">
+                      反響の取りこぼしが<br />ゼロになる
+                    </span>
+                  </h3>
+                  <p class="merit-box__text">
+                    SUMO・HOMES・at home・電話など、複数経路の反響をNexが自動で一か所に集約します。担当者アサインからステータス管理まで、チーム全員がリアルタイムで把握できるため、「誰が対応したか分からない」「気づいたら他社で成約されていた」という事態がなくなります。
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="merit__box">
+            <div class="merit-box is-reverse">
+              <div class="merit-box__content">
+                <div class="merit-box__image">
+                  <img src="./img/feature-02.png" alt="" />
+                </div>
+                <div class="merit-box__body">
+                  <h3 class="merit-box__head">
+                    <span class="merit-box__number">2</span>
+                    <span class="merit-box__title">
+                      追客工数が平均42%<br class="hidden-pc" />削減できる
+                    </span>
+                  </h3>
+                  <p class="merit-box__text">
+                    反響が入った瞬間に自動メール・LINE送信が走り、その後のリマインドもシナリオ設定で自動化されます。担当者が手を動かさなくても顧客接触が続くため、追客にかけていた時間を商談や内見対応に集中できます。導入企業の平均で追客工数が42%削減されています。
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="merit__box">
+            <div class="merit-box">
+              <div class="merit-box__content">
+                <div class="merit-box__image">
+                  <img src="./img/feature-03.png" alt="" />
+                </div>
+                <div class="merit-box__body">
+                  <h3 class="merit-box__head">
+                    <span class="merit-box__number">3</span>
+                    <span class="merit-box__title">
+                      内見から申込まで<br class="hidden-pc" />ペーパーレスで完結
+                    </span>
+                  </h3>
+                  <p class="merit-box__text">
+                    お客様がURLから内見日時を選択し、担当者のカレンダーと自動連携。内見後はそのままオンライン申込書へ誘導できます。記入漏れや郵送の手間がなくなり、申込から審査完了までのリードタイムを大幅に短縮。電子契約にも対応しているため、契約書の印刷・郵送・保管コストも削減できます。
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="cta">
+      <div class="cta__inner inner">
+        <p class="cat__text">
+          いかがでしたか？<br class="hidden-pc" /><span class="inline-block">現場の業務を、もっと</span><span class="inline-block">シンプルにしてみませんか？</span><br />まずは14日間、無料でお試しください。
+        </p>
+        <div class="cat__button">
+          <a href="#contact" class="button">無料トライアルを始める</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="compare">
+      <div class="compare__inner inner">
+        <div class="compare__title js-in-view fade-in-up">
+          他社サービスとの違い
+        </div>
+        <div class="compare__content">
+          <table class="compare__table">
+            <thead>
+              <tr>
+                <th></th>
+                <th>NEX</th>
+                <th>他社A</th>
+                <th>他社B</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th>初期費用</th>
+                <td>なし！</td>
+                <td>別途見積もり<br />（数十万円〜）</td>
+                <td>50,000円〜</td>
+              </tr>
+              <tr>
+                <th>導入期間</th>
+                <td>最短3日！</td>
+                <td>1〜3ヶ月</td>
+                <td>1ヶ月〜</td>
+              </tr>
+              <tr>
+                <th>追客自動化</th>
+                <td>あり！<br />（メール＋LINE）</td>
+                <td>メールのみ</td>
+                <td>なし</td>
+              </tr>
+              <tr>
+                <th>オンライン申込・<br />電子契約</th>
+                <td>あり！</td>
+                <td>オプション</td>
+                <td>なし</td>
+              </tr>
+              <tr>
+                <th>無料トライアル</th>
+                <td>14日間！</td>
+                <td>なし</td>
+                <td>7日間</td>
+              </tr>
+            </た>
+          </table>
+        </div>
+        <p class="compare__attention">横にスクロールできます</p>
+      </div>
+    </div>
+
+    <section class="qa">
+      <div class="qa__inner inner">
+        <div class="qa__title">
+          <div class="heading js-in-view fade-in-up">
+            <div class="heading__en">Q&amp;A</div>
+            <h2 class="heading__ja">よくあるご質問</h2>
+          </div>
+        </div>
+        <div class="qa__boxes">
+          <div class="qa__box qa-box is-open">
+            <button type="button" class="qa-box__head js-accordion">
+              <span class="qa-box__head-icon">Q</span>
+              <span class="qa-box__head-text">導入までどのくらいの期間がかかりますか？</span>
+            </button>
+            <div class="qa-box__body" style="display: block">
+              <div class="qa-box__a">
+                <span class="qa-box__a-icon">A</span>
+                <span class="qa-box__a-text">最短3日で利用開始できます。アカウント作成後、ポータルサイトとのAPI連携設定をサポートチームが伴走します。既存データ（Excelなど）の移行サポートも対応しています。</span>
+              </div>
+            </div>
+          </div>
+          <div class="qa__box qa-box">
+            <button type="button" class="qa-box__head js-accordion">
+              <span class="qa-box__head-icon">Q</span>
+              <span class="qa-box__head-text">いえらぶ・IRANI BBとの違いは何ですか？</span>
+            </button>
+            <div class="qa-box__body">
+              <div class="qa-box__a">
+                <span class="qa-box__a-icon">A</span>
+                <span class="qa-box__a-text">Nexは「反響から成約まで」の顧客対応フローに特化したSaaSです。追客自動化・オンライン申込・内見管理をシンプルなUIで統合しており、現場スタッフがすぐ使えることを重視して設計されています。</span>
+              </div>
+            </div>
+          </div>
+          <div class="qa__box qa-box">
+            <button type="button" class="qa-box__head js-accordion">
+              <span class="qa-box__head-icon">Q</span>
+              <span class="qa-box__head-text">既存の賃貸管理システムと連携できますか？</span>
+            </button>
+            <div class="qa-box__body">
+              <div class="qa-box__a">
+                <span class="qa-box__a-icon">A</span>
+                <span class="qa-box__a-text">主要な賃貸管理システムとのCSV連携、またはAPI連携（プロ・エンタープライズプラン）に対応しています。詳細はお問い合わせください。</span>
+              </div>
+            </div>
+          </div>
+          <div class="qa__box qa-box">
+            <button type="button" class="qa-box__head js-accordion">
+              <span class="qa-box__head-icon">Q</span>
+              <span class="qa-box__head-text">セキュリティ面は大丈夫ですか？</span>
+            </button>
+            <div class="qa-box__body">
+              <div class="qa-box__a">
+                <span class="qa-box__a-icon">A</span>
+                <span class="qa-box__a-text">AWS上で運用し、通信はすべてTLS暗号化しています。個人情報の取り扱いはプライバシーマーク取得のもと管理されています。エンタープライズプランではSOC2レポートの提供も可能です。</span>
+              </div>
+            </div>
+          </div>
+          <div class="qa__box qa-box">
+            <button type="button" class="qa-box__head js-accordion">
+              <span class="qa-box__head-icon">Q</span>
+              <span class="qa-box__head-text">途中でプランを変更することはできますか？</span>
+            </button>
+            <div class="qa-box__body">
+              <div class="qa-box__a">
+                <span class="qa-box__a-icon">A</span>
+                <span class="qa-box__a-text">はい、いつでもアップグレード・ダウングレードが可能です。月払いプランは当月末での変更、年払いプランは次回更新時の変更となります。</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- gallery -->
+    <section class="gallery">
+      <div class="gallery__inner inner">
+        <div class="gallery__title">
+          <div class="heading js-in-view fade-in-up">
+            <div class="heading__en">GALLERY</div>
+            <h2 class="heading__ja">導入事例ギャラリー</h2>
+          </div>
+        </div>
+        <div class="gallery__slider">
+          <div id="js-gallery-swiper" class="swiper gallery__swiper">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide gallery__slide">
+                <div class="gallery-card">
+                  <div class="gallery-card__image">
+                    <img src="img/house Image1 .png" alt="House Image 1" />
+                  </div>
+                  <p class="gallery-card__text">
+                    反響一元管理で取りこぼしゼロを実現。成約率が1.5倍に。
+                  </p>
+                </div>
+              </div>
+              <div class="swiper-slide gallery__slide">
+                <div class="gallery-card">
+                  <div class="gallery-card__image">
+                    <img src="img/house Image2 .png" alt="House Image 2" />
+                  </div>
+                  <p class="gallery-card__text">
+                    追客自動化で週8時間の工数削減。スタッフの残業もゼロに。
+                  </p>
+                </div>
+              </div>
+              <div class="swiper-slide gallery__slide">
+                <div class="gallery-card">
+                  <div class="gallery-card__image">
+                    <img src="img/house Image3.png" alt="" />
+                  </div>
+                  <p class="gallery-card__text">
+                    電子申込・電子契約でペーパーレス化。印刷・郵送コストを削減。
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div
+              id="js-gallery-pagination"
+              class="swiper-pagination gallery__pagination"
+            ></div>
+            <div
+              id="js-gallery-prev"
+              class="swiper-button-prev gallery__prev"
+            ></div>
+            <div
+              id="js-gallery-next"
+              class="swiper-button-next gallery__next"
+            ></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+      <!-- ここから下は、案件では削除されているため無視してください。 -->
+
+    <section id="contact" class="contact">
+      <div class="contact__inner inner">
+        <div class="contact__box">
+          <div class="contact__title">
+            <div class="heading js-in-view fade-in-up">
+              <div class="heading__en">CONTACT</div>
+              <h2 class="heading__ja">お問い合わせ・無料トライアル</h2>
+            </div>
+          </div>
+          <form class="contact__form">
+            <div class="contact__fields">
+              <div class="contact__field">
+                <div class="form-field">
+                  <div class="form-field__head">
+                    <label for="your-name" class="form-field__label">お名前</label>
+                    <span class="form-field__tag">必須</span>
+                  </div>
+                  <div class="form-field__item">
+                    <input
+                      class="form-text"
+                      type="text"
+                      name="your-name"
+                      id="your-name"
+                      placeholder="山田 太郎"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div class="contact__field">
+                <div class="form-field">
+                  <div class="form-field__head">
+                    <label for="your-company" class="form-field__label">会社名</label>
+                    <span class="form-field__tag">必須</span>
+                  </div>
+                  <div class="form-field__item">
+                    <input
+                      class="form-text"
+                      type="text"
+                      name="your-company"
+                      id="your-company"
+                      placeholder="株式会社日本やすらぎ不動産"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div class="contact__field">
+                <div class="form-field">
+                  <div class="form-field__head">
+                    <label for="your-email" class="form-field__label">メールアドレス</label>
+                    <span class="form-field__tag">必須</span>
+                  </div>
+                  <div class="form-field__item">
+                    <input
+                      class="form-text"
+                      type="email"
+                      name="your-email"
+                      id="your-email"
+                      placeholder="info@example.com"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div class="contact__field">
+                <div class="form-field">
+                  <div class="form-field__head">
+                    <div class="form-field__label">お問い合わせ項目</div>
+                    <span class="form-field__tag">必須</span>
+                  </div>
+                  <div class="form-field__item">
+                    <div class="form-field__radios">
+                      <label class="form-field__radio from-radio">
+                        <input class="from-radio__input" type="radio" name="your-type" />
+                        <span class="from-radio__text">無料トライアルを申し込む</span>
+                      </label>
+                      <label class="form-field__radio from-radio">
+                        <input class="from-radio__input" type="radio" name="your-type" />
+                        <span class="from-radio__text">資料請求</span>
+                      </label>
+                      <label class="form-field__radio from-radio">
+                        <input class="from-radio__input" type="radio" name="your-type" />
+                        <span class="from-radio__text">デモを見たい</span>
+                      </label>
+                      <label class="form-field__radio from-radio">
+                        <input class="from-radio__input" type="radio" name="your-type" />
+                        <span class="from-radio__text">その他のお問い合わせ</span>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="contact__field">
+                <div class="form-field">
+                  <div class="form-field__head">
+                    <label for="your-staff" class="form-field__label">スタッフ数</label>
+                    <span class="form-field__tag is-option">任意</span>
+                  </div>
+                  <div class="form-field__item">
+                    <select name="your-staff" id="your-staff" class="form-select">
+                      <option value="">選択してください</option>
+                      <option value="">1〜5名</option>
+                      <option value="">6〜10名</option>
+                      <option value="">11〜20名</option>
+                      <option value="">21〜50名</option>
+                      <option value="">51名以上</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <div class="contact__field">
+                <div class="form-field">
+                  <div class="form-field__head">
+                    <label for="your-message" class="form-field__label">お問い合わせ内容</label>
+                    <span class="form-field__tag is-option">任意</span>
+                  </div>
+                  <div class="form-field__item">
+                    <textarea
+                      name="your-message"
+                      id="your-message"
+                      class="form-textarea"
+                      cols="30"
+                      rows="10"
+                      placeholder="ご質問・ご要望があればご記入ください"
+                    ></textarea>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="contact__privacy">
+              <label class="form-checkbox">
+                <input
+                  type="checkbox"
+                  name="your-privacy"
+                  class="form-checkbox__input"
+                />
+                <span class="form-checkbox__text"
+                  ><a href="" target="_blank">プライバシーポリシー</a>に同意する</span
+                >
+              </label>
+            </div>
+            <div class="contact__button">
+              <input type="submit" value="送信する" class="button" />
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="footer__inner inner">
+        <small class="footer__copyright">COPYRIGHT 2025 Nex Inc.</small>
+      </div>
+    </footer>
+
+    <a href="#" class="pagetop" id="js-pagetop">
+      <img src="./img/pagetop-img.png" alt="ページトップへ" />
+    </a>
+
+    <script src="./js/lib/swiper-bundle.min.js"></script>
+    <script src="./js/script.js"></script>
+  </body>
+</html>
