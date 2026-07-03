@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>業務効率化ポートフォリオ</title>
+    <link rel="stylesheet" href="./style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+  </head>
+  <body>
+    <header class="site-header" id="top">
+      <nav>
+        <a href="#about">About</a>
+        <a href="#faq">FAQ</a>
+        <a href="#gallery">Gallery</a>
+      </nav>
+    </header>
+
+    <main>
+      <section id="about" class="js-in-view reveal-item">
+        <h1>不動産賃貸仲介会社向けソリューション</h1>
+        <button type="button" data-open-modal>開発ストーリーを見る</button>
+        <dialog id="dev-story-modal" data-modal>
+          <article>
+            <h2>開発ストーリー</h2>
+            <p>現場業務を効率化するためのポートフォリオプロジェクトです。</p>
+            <button type="button" data-close-modal aria-label="閉じる">×</button>
+          </article>
+        </dialog>
+      </section>
+
+      <section id="faq">
+        <h2>FAQ</h2>
+        <div class="faq-item">
+          <button type="button" class="faq-question" aria-expanded="false">
+            導入までにどれくらいかかりますか？
+          </button>
+          <div class="faq-answer" hidden>最短2週間で初期導入が可能です。</div>
+        </div>
+        <div class="faq-item">
+          <button type="button" class="faq-question" aria-expanded="false">
+            カスタマイズは可能ですか？
+          </button>
+          <div class="faq-answer" hidden>可能です。業務フローに合わせて調整できます。</div>
+        </div>
+      </section>
+
+      <section class="stats js-in-view reveal-item">
+        <h2>成果指標</h2>
+        <p class="num-val">200+</p>
+        <p class="num-val">42%</p>
+        <p class="num-val">12.5h</p>
+      </section>
+
+      <section id="gallery" class="js-in-view reveal-item">
+        <h2>ギャラリー</h2>
+        <div class="swiper">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">Slide 1</div>
+            <div class="swiper-slide">Slide 2</div>
+            <div class="swiper-slide">Slide 3</div>
+            <div class="swiper-slide">Slide 4</div>
+          </div>
+          <div class="swiper-pagination"></div>
+          <div class="swiper-button-prev"></div>
+          <div class="swiper-button-next"></div>
+        </div>
+      </section>
+    </main>
+
+    <button type="button" class="js-pagetop" aria-label="ページトップへ">TOP</button>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="./script.js"></script>
+  </body>
+</html>
