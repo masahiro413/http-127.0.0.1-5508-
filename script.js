@@ -128,6 +128,8 @@
   }
 
   function initCountUp() {
+    const NUMERIC_PATTERN = /-?\d+(?:\.\d+)?/;
+    const DEFAULT_COUNTUP_DURATION_MS = 1400;
     const elements = document.querySelectorAll('.num-val');
     if (!elements.length || typeof IntersectionObserver === 'undefined') {
       return;
@@ -135,7 +137,7 @@
 
     function animate(element) {
       const original = element.textContent ? element.textContent.trim() : '';
-      const match = original.match(/-?\d+(?:\.\d+)?/);
+      const match = original.match(NUMERIC_PATTERN);
       if (!match) {
         return;
       }
@@ -146,7 +148,7 @@
       const suffix = original.slice(startIndex + numericText.length);
       const endValue = Number(numericText);
       const decimals = (numericText.split('.')[1] || '').length;
-      const duration = Number(element.dataset.duration || 1400);
+      const duration = Number(element.dataset.duration || DEFAULT_COUNTUP_DURATION_MS);
 
       function formatValue(value) {
         if (decimals > 0) {
